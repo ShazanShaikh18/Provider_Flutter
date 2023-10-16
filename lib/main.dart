@@ -1,12 +1,14 @@
+// Change Notifier Provider
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_flutter/future_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,7 @@ class MyApp extends StatelessWidget {
         // useMaterial3: true,
       ),
       home: const MyHomePage(),
+      //home: const HomeScreen(),
     );
   }
 }
@@ -45,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Flutter Provider'),
+          title: const Text('Flutter Provider'),
         ),
         body: Center(
           child: Column(
@@ -63,8 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   builder: (context, MyModel, child) {
                     return Text(
                       "${MyModel.someValue}",
-                      style:
-                          TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 27, fontWeight: FontWeight.bold),
                     );
                   },
                 ),
@@ -73,13 +76,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Consumer<MyModel>(
                   builder: (context, MyModel, child) {
                     return ElevatedButton(
-                        style: ButtonStyle(
+                        style: const ButtonStyle(
                             backgroundColor:
                                 MaterialStatePropertyAll(Colors.teal)),
                         onPressed: () {
                           MyModel.doSomething();
                         },
-                        child: Text(
+                        child: const Text(
                           "CHANGE VALUE",
                           style: TextStyle(color: Colors.white),
                         ));
@@ -96,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: _incrementCounter,
           tooltip: 'Increment',
           child: const Icon(Icons.add),
-        ), // This trailing comma makes auto-formatting nicer for build methods.
+        ),
       ),
     );
   }
